@@ -52,9 +52,10 @@ function uri_cams_shortcode($attributes, $content, $shortcode) {
 		set_site_transient( $transient_name, $path, 10 * MINUTE_IN_SECONDS );
 	}
 	
-	$file = uri_cams_get_directory() . '/' . uri_cams_get_name($ip);
+	$filename = uri_cams_get_name($ip);
+	$file = uri_cams_get_directory() . '/' . $filename;
 	if( file_exists( $file ) ) {
-		$path = uri_cams_get_path() . $file;
+		$path = uri_cams_get_path() . $filename;
 	}
 	// @todo what to do if $path isn't set and there's no old image?	
 
@@ -138,6 +139,3 @@ function uri_cams_get_path() {
 function uri_cams_get_name($ip) {
 	return 'uri-cams--' . $ip . '.jpg';
 }
-
-
-
