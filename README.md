@@ -2,7 +2,7 @@
 
 Add the `[uri-cams]` shortcode to a page and a tides widget appears.
 
-The widget pulls in live water temp and tide prediction data from NOAA and graphically displays the current position of the tide.  By default, data is pulled from the station at Quonset Point, RI, but a different station or buoy can be set if desired.
+The widget pulls in still images from the quad cams and saves them in the uploads directory.  It does not add them to the Media Liberry.  It refreshes the images every 15 minutes or so. 
 
 ## Attributes
 
