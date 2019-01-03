@@ -6,15 +6,15 @@ The widget pulls in live water temp and tide prediction data from NOAA and graph
 
 ## Attributes
 
-The tides widget is somewhat configurable by adding attributes to the shortcode:
+The cams shortcode is configurable by adding attributes to the shortcode:
 
-**`ip`** (num)(optional)  
+**`ip`** (string)
 The IP address from which to retrieve data. The default is the Bay Campus. (default: `131.128.104.45`)  
 
-**`username`** (num)(optional)  
+**`username`** (string)
 Username to access the camera
 
-**`password`** (bool)(optional)  
+**`password`** (string)
 Password to access the camera
 
 **`class`** (string)(optional)  
