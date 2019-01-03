@@ -52,12 +52,11 @@ function uri_cams_shortcode($attributes, $content, $shortcode) {
 		set_site_transient( $transient_name, $path, 10 * MINUTE_IN_SECONDS );
 	}
 	
-	// @todo what to do if $path isn't set?
-	
 	$file = uri_cams_get_directory() . '/' . uri_cams_get_name($ip);
 	if( file_exists( $file ) ) {
 		$path = uri_cams_get_path() . $file;
 	}
+	// @todo what to do if $path isn't set and there's no old image?	
 
 
 
