@@ -46,26 +46,35 @@ function uri_cams_shortcode($attributes, $content, $shortcode) {
 	
 	$transient_name = 'uri_cams_' . $ip;
 
-	if ( false === ( $path = get_site_transient( $transient_name ) ) ) {
+	if ( false === ( $photo = get_site_transient( $transient_name ) ) ) {
 		// It wasn't there, so regenerate the data and save the transient
-		$path = uri_cams_get_image($ip, $username, $password);
-		set_site_transient( $transient_name, $path, 10 * MINUTE_IN_SECONDS );
+		$photo = uri_cams_get_image($ip, $username, $password);
+		set_site_transient( $transient_name, $photo, 10 * MINUTE_IN_SECONDS );
 	}
+	
+	$path = $photo['path'];
+	$time = $photo['time'];
 	
 	$filename = uri_cams_get_name($ip);
 	$file = uri_cams_get_directory() . '/' . $filename;
 	if( file_exists( $file ) ) {
 		$path = uri_cams_get_path() . $filename;
+		$time = filemtime($file);
 	}
-	// @todo what to do if $path isn't set and there's no old image?	
 
+	// @todo what to do if $path isn't set and there's no old image?
+	
+	if( ! empty( $time ) ) {
+		$alt .= ' (retrieved ' . Date('Y-m-d H:i:s', $time) . ')';
+	}
 
 
 	$output = '<figure class="uri-cams">';
 	// $output .= strtotime('now');
-	$output .= '<img src="' . $path . '" alt="' . $alt . '" />';
+	$output .= '<img src="' . $path . '?t=' . $time . '" alt="' . $alt . '" />';
 
 	$output .= '</figure>';
+
 	return $output;
 
 }
@@ -108,7 +117,10 @@ function uri_cams_get_image( $ip, $username, $password ) {
 		$destination = uri_cams_get_directory();
 		$file = uri_cams_save_file( $destination, $response, $ip );
 		$path = uri_cams_get_path() . $file;
-		return $path;
+		return array(
+			'path' => $path,
+			'time' => strtotime('now')
+		);
 	}
 	
 }
