@@ -3,6 +3,8 @@
 	$classes = 'uri-cams';
 	$classes .= ( ! empty( $class ) ) ? ' ' . $class : '';
 	
+	$alt .= ' (retrieved ' . $timestamp . ')';
+	
 ?>
 
 <figure class="<?php echo $classes; ?>">
