@@ -61,11 +61,14 @@ function uri_cams_shortcode($attributes, $content, $shortcode) {
 		$path = uri_cams_get_path() . $filename;
 		$time = filemtime($file);
 	}
+	
+	$timestamp = uri_cams_format_date( $time );
+
 
 	// @todo what to do if $path isn't set and there's no old image?
 	
 	if( ! empty( $time ) ) {
-		$alt .= ' (retrieved ' . Date('Y-m-d H:i:s', $time) . ')';
+		$alt .= ' (retrieved ' . $timestamp . ')';
 	}
 
 	$classes = 'uri-cams';
@@ -152,4 +155,10 @@ function uri_cams_get_path() {
 
 function uri_cams_get_name($ip) {
 	return 'uri-cams--' . $ip . '.jpg';
+}
+
+function uri_cams_format_date($timestamp) {
+	$t = new DateTime( '@'.$timestamp );
+	$t->setTimezone( new DateTimeZone( get_option('gmt_offset') ) );
+	return $t->format('Y-m-d H:i:s');
 }
