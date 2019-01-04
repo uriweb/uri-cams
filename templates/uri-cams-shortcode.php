@@ -3,6 +3,7 @@
 	$classes = 'uri-cams';
 	$classes .= ( ! empty( $class ) ) ? ' ' . $class : '';
 	
+	$timestamp = uri_cams_format_date( $time );
 	$alt .= ' (retrieved ' . $timestamp . ')';
 	
 ?>

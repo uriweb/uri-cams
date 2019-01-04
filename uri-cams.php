@@ -70,7 +70,6 @@ function uri_cams_shortcode($attributes, $content, $shortcode) {
 		return '';
 	}
 	
-	$timestamp = uri_cams_format_date( $time );
 	ob_start();
 	include 'templates/uri-cams-shortcode.php';
 	$html = ob_get_clean();
@@ -236,7 +235,6 @@ function uri_cams_engineering_shortcode($attributes, $content, $shortcode) {
 		return '';
 	}
 	
-	$timestamp = uri_cams_format_date( $time );
 	ob_start();
 	include 'templates/uri-cams-shortcode.php';
 	$html = ob_get_clean();
