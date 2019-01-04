@@ -23,6 +23,9 @@ Set custom CSS class(s) (default: none)
 **`alt`** (string)
 The alternative text description of the image from the camera
 
+**`link`** (boolean)
+If set to true, the image element will be a link to the image (for lightbox or what not)
+
 ## Plugin Details
 
 Contributors: Brandon Fuller, John Pennypacker  

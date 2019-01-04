@@ -39,7 +39,8 @@ function uri_cams_shortcode($attributes, $content, $shortcode) {
 			'username' => 'Viewer',
 			'password' => 'bay campus',
 			'alt' => '',
-			'class' => ''
+			'class' => '',
+			'link' => false
 		), $attributes )
 	);
 	
@@ -75,8 +76,16 @@ function uri_cams_shortcode($attributes, $content, $shortcode) {
 	$classes .= ( ! empty( $class ) ) ? ' ' . $class : '';
 
 	$output = '<figure class="' . $classes . '">';
-	// $output .= strtotime('now');
+	
+	if ( false !== $link ) {
+		$output .= '<a href="' . $path . '?t=' . $time . '">';
+	}
+
 	$output .= '<img src="' . $path . '?t=' . $time . '" alt="' . $alt . '" />';
+
+	if ( false !== $link ) {
+		$output .= '</a>';
+	}
 
 	$output .= '</figure>';
 
