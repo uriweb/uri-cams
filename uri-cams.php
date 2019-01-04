@@ -68,8 +68,10 @@ function uri_cams_shortcode($attributes, $content, $shortcode) {
 		$alt .= ' (retrieved ' . Date('Y-m-d H:i:s', $time) . ')';
 	}
 
+	$classes = 'uri-cams';
+	$classes .= ( ! empty( $class ) ) ? ' ' . $class : '';
 
-	$output = '<figure class="uri-cams">';
+	$output = '<figure class="' . $classes . '">';
 	// $output .= strtotime('now');
 	$output .= '<img src="' . $path . '?t=' . $time . '" alt="' . $alt . '" />';
 
