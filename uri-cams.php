@@ -3,7 +3,7 @@
 Plugin Name: URI Cams
 Plugin URI: https://www.uri.edu
 Description: Webcam picture importer
-Version: 1.0.1
+Version: 1.1.0
 Author: URI Web Communications
 Author URI: 
 @author: John Pennypacker <jpennypacker@uri.edu>
